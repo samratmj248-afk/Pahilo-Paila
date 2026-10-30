@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block title %}Montessori Programs | Pahilo Paila Montessori School (Suda){% endblock %}
+
+{% block content %}
+<section class="py-5">
+  <div class="container py-4">
+    <!-- Header Section -->
+    <div class="text-center max-w-700 mx-auto mb-5">
+      <div class="badge-montessori mb-3">
+        <i class="bi bi-mortarboard-fill me-1"></i> Age-Aligned Learning
+      </div>
+      <h1 class="section-title mb-3">Our Comprehensive Programs</h1>
+      <p class="section-subtitle">
+        From infancy through early primary years, each curriculum is crafted to support self-motivated growth, motor dexterity, sensorial awareness, and cognitive freedom in Suda, Mahendranagar.
+      </p>
+    </div>
+
+    <!-- Programs Grid -->
+    <div class="row g-4">
+      {% for program in programs %}
+      <div class="col-lg-6">
+        <div class="glass-panel p-4 p-md-4 h-100 d-flex flex-column justify-content-between" style="border-left: 5px solid {{ program.color_accent }};">
+          <div>
+            <!-- Age badge & Timing -->
+            <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+              <span class="badge-age-pill">
+                <i class="bi bi-person-fill text-primary me-1"></i> {{ program.get_age_group_display }}
+              </span>
+              <span class="badge bg-warning bg-opacity-10 text-dark border border-warning border-opacity-25 px-2 py-1 rounded-pill small fw-semibold">
+                <i class="bi bi-clock-fill text-warning me-1"></i>{{ program.timing }}
+              </span>
+            </div>
+            
+            <!-- Program Title -->
+            <h2 class="h3 fw-bold mb-3" style="color: #0F172A; letter-spacing: -0.01em;">
+              {{ program.title }}
+            </h2>
+
+            <!-- Program Description -->
+            <p class="mb-4" style="color: #475569; font-size: 0.96rem; line-height: 1.65;">
+              {{ program.description }}
+            </p>
+
+            <!-- Focus Areas -->
+            <div class="mb-4">
+              <h6 class="fw-bold mb-2 small text-uppercase text-secondary" style="letter-spacing: 0.05em;">
+                Curriculum Focus Areas:
+              </h6>
+              <div class="d-flex flex-wrap gap-2">
+                {% for hl in program.highlights_list %}
+                  <span class="badge-tag-curriculum">
+                    <i class="bi bi-check-circle-fill text-success me-1"></i>{{ hl }}
+                  </span>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Action Bar -->
+          <div class="d-flex justify-content-between align-items-center pt-3 border-top border-slate-200 mt-2">
+            <span class="small fw-semibold" style="color: #64748B;">
+              <i class="bi bi-people-fill text-secondary me-1"></i>Intake limit: <strong class="text-dark">{{ program.capacity }}</strong> per cohort
+            </span>
+            <div class="d-flex gap-2">
+              <a href="{% url 'school:program_detail' program.slug %}" class="btn btn-sm btn-outline-secondary px-3 py-2 rounded-3 fw-semibold">
+                Details
+              </a>
+              <a href="{% url 'school:admissions' %}" class="btn btn-sm btn-montessori-primary px-3 py-2">
+                Enroll Now
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

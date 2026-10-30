@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %}Events & Activities | Pahilo Paila Montessori (Suda, Mahendranagar){% endblock %}
+
+{% block content %}
+<section class="py-5">
+  <div class="container py-4">
+    <div class="text-center max-w-700 mx-auto mb-5">
+      <div class="badge-montessori mb-2">School Activities</div>
+      <h1 class="display-4 fw-bold mb-3">Events & Celebrations</h1>
+      <p class="text-secondary lead fs-6">
+        Stay updated with our parenting workshops, seasonal celebrations, and Montessori open days in Suda, Mahendranagar.
+      </p>
+    </div>
+
+    <!-- Active Notices Alert -->
+    {% if active_notices %}
+    <div class="glass-panel p-4 mb-5 border-danger border-opacity-50">
+      <h4 class="fw-bold mb-3 d-flex align-items-center gap-2">
+        <i class="bi bi-megaphone-fill text-danger"></i> Official Notices & Circulars
+      </h4>
+      <div class="d-flex flex-column gap-3">
+        {% for notice in active_notices %}
+        <div class="p-3 bg-dark rounded-3 border border-secondary border-opacity-25 d-flex justify-content-between align-items-center">
+          <div>
+            <div class="d-flex align-items-center gap-2 mb-1">
+              <span class="badge bg-danger text-uppercase">{{ notice.get_urgency_display }}</span>
+              <h6 class="mb-0 fw-bold">{{ notice.title }}</h6>
+            </div>
+            <p class="text-secondary small mb-0">{{ notice.content }}</p>
+          </div>
+          <span class="text-secondary small text-nowrap ms-3"><i class="bi bi-calendar-event me-1"></i>{{ notice.publish_date }}</span>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+    <!-- Upcoming Events -->
+    <h3 class="fw-bold mb-4">Upcoming Events & Workshops</h3>
+    <div class="row g-4 mb-5">
+      {% for event in upcoming_events %}
+      <div class="col-lg-6">
+        <div class="glass-panel p-4 h-100 d-flex flex-column justify-content-between">
+          <div>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <span class="badge bg-success bg-opacity-25 text-success border border-success border-opacity-50 px-3 py-1 rounded-pill">
+                Upcoming
+              </span>
+              <span class="text-warning small"><i class="bi bi-clock me-1"></i>{{ event.start_time|time:"g:i A" }} - {{ event.end_time|time:"g:i A" }}</span>
+            </div>
+            <h4 class="fw-bold mb-2">{{ event.title }}</h4>
+            <div class="text-secondary small mb-3"><i class="bi bi-geo-alt me-1 text-danger"></i>{{ event.location }}</div>
+            <p class="text-secondary small mb-4">{{ event.description }}</p>
+          </div>
+          <div class="d-flex justify-content-between align-items-center pt-3 border-top border-secondary border-opacity-25">
+            <span class="fw-bold"><i class="bi bi-calendar3 me-2 text-danger"></i>{{ event.event_date|date:"F d, Y" }}</span>
+            <a href="{% url 'school:contact' %}" class="btn btn-sm btn-montessori-primary">RSVP / Inquire</a>
+          </div>
+        </div>
+      </div>
+      {% empty %}
+      <div class="col-12">
+        <div class="glass-panel p-5 text-center text-secondary">
+          <i class="bi bi-calendar-check fs-1 text-secondary mb-3 d-block"></i>
+          No upcoming public events at this moment. Check our Facebook page for live daily updates!
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

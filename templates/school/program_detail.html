@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ program.title }} | Pahilo Paila Montessori School{% endblock %}
+
+{% block content %}
+<section class="py-5">
+  <div class="container py-4">
+    <a href="{% url 'school:programs' %}" class="btn btn-sm btn-outline-secondary mb-4 px-3 py-2 rounded-3 fw-semibold">
+      &larr; Back to All Programs
+    </a>
+    
+    <div class="row g-5">
+      <div class="col-lg-8">
+        <div class="glass-panel p-4 p-md-5 mb-4" style="border-top: 5px solid {{ program.color_accent }};">
+          <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
+            <span class="badge-montessori">{{ program.get_age_group_display }}</span>
+            <span class="badge bg-warning bg-opacity-10 text-dark border border-warning border-opacity-25 px-2 py-1 rounded-pill small fw-semibold">
+              <i class="bi bi-clock-fill text-warning me-1"></i>{{ program.timing }}
+            </span>
+          </div>
+
+          <h1 class="display-5 fw-bold mb-4" style="color: #0F172A; letter-spacing: -0.02em;">
+            {{ program.title }}
+          </h1>
+          <div class="fs-5 mb-5 lh-lg" style="color: #475569;">
+            {{ program.description|linebreaks }}
+          </div>
+
+          <h3 class="fw-bold mb-3" style="color: #0F172A;">Key Developmental Learning Outcomes</h3>
+          <div class="row g-3 mb-5">
+            {% for hl in program.highlights_list %}
+            <div class="col-md-6">
+              <div class="p-3 glass-panel d-flex align-items-center gap-3" style="background: #F8FAFC;">
+                <i class="bi bi-check-circle-fill text-success fs-4"></i>
+                <span class="fw-bold text-dark">{{ hl }}</span>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+
+          <div class="p-4 rounded-4 bg-light border border-slate-200 d-flex flex-wrap justify-content-between align-items-center gap-3">
+            <div>
+              <h5 class="fw-bold mb-1 text-dark">Interested in this program?</h5>
+              <p class="text-secondary small mb-0">Limited seats available to maintain Dr. Montessori's strict guide-to-child ratio.</p>
+            </div>
+            <a href="{% url 'school:admissions' %}" class="btn btn-montessori-primary">Book an Observation &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="glass-panel p-4 mb-4">
+          <h4 class="fw-bold mb-3 text-dark">Program Quick Facts</h4>
+          <ul class="list-unstyled text-secondary d-flex flex-column gap-3 small">
+            <li><strong class="text-dark">Age Band:</strong> {{ program.get_age_group_display }}</li>
+            <li><strong class="text-dark">Daily Schedule:</strong> {{ program.timing }}</li>
+            <li><strong class="text-dark">Cohort Limit:</strong> {{ program.capacity }} Children</li>
+            <li><strong class="text-dark">Language Focus:</strong> English & Nepali Dual Immersion</li>
+            <li><strong class="text-dark">Meals:</strong> Organic, Child-Friendly Nutritious Snacks Included</li>
+          </ul>
+        </div>
+
+        {% if other_programs %}
+        <div class="glass-panel p-4">
+          <h5 class="fw-bold mb-3 text-dark">Other Programs</h5>
+          <div class="d-flex flex-column gap-3">
+            {% for op in other_programs %}
+            <a href="{% url 'school:program_detail' op.slug %}" class="d-flex justify-content-between align-items-center text-dark text-decoration-none py-1 border-bottom border-light">
+              <span class="fw-semibold">{{ op.title }}</span>
+              <i class="bi bi-chevron-right text-primary"></i>
+            </a>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

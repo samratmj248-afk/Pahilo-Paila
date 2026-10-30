@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Photo Gallery & School Moments | Pahilo Paila Montessori (Suda, Mahendranagar){% endblock %}
+
+{% block content %}
+<section class="py-5">
+  <div class="container py-4">
+    <!-- Header Section -->
+    <div class="text-center max-w-700 mx-auto mb-5">
+      <div class="badge-montessori mb-3">
+        <i class="bi bi-camera-fill me-1"></i> Life At Pahilo Paila
+      </div>
+      <h1 class="section-title mb-3">Moments of Joy & Growth</h1>
+      <p class="section-subtitle">
+        Authentic moments from Pahilo Paila Montessori School in Suda, Mahendranagar — from outdoor rice transplantation on National Paddy Day to joyful festivals, sensorial discovery, and classroom learning.
+      </p>
+    </div>
+
+    <!-- Category Filter Tabs -->
+    <div class="text-center mb-5">
+      <div class="gallery-filter-nav" id="gallery-filters">
+        <button class="gallery-filter-pill active" data-filter="all">
+          <i class="bi bi-grid-fill"></i> All Photos
+        </button>
+        <button class="gallery-filter-pill" data-filter="celebrations">
+          <span>🎉</span> Festivals & Celebrations
+        </button>
+        <button class="gallery-filter-pill" data-filter="nature">
+          <span>🌱</span> Outdoor & Nature Play
+        </button>
+        <button class="gallery-filter-pill" data-filter="sensorial">
+          <span>🎨</span> Sensorial & Art
+        </button>
+        <button class="gallery-filter-pill" data-filter="classroom">
+          <span>📚</span> Classroom & Teachers
+        </button>
+      </div>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="row g-4" id="gallery-grid">
+      {% for img in images %}
+      <div class="col-md-6 col-lg-4 gallery-card-item" data-category="{{ img.category }}">
+        <div class="glass-panel p-2 h-100 overflow-hidden d-flex flex-column justify-content-between shadow-sm">
+          <div>
+            <div class="position-relative overflow-hidden rounded-3" style="height: 270px; background: #E2E8F0;">
+              <img src="{{ img.image_url }}" 
+                   alt="{{ img.title }}" 
+                   class="img-fluid w-100 h-100 gallery-preview-img" 
+                   style="object-fit: cover; cursor: pointer; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);"
+                   onclick="openGalleryModal('{{ img.image_url }}', '{{ img.title|escapejs }}', '{{ img.caption|default:''|escapejs }}')">
+              
+              <div class="position-absolute top-0 end-0 m-2">
+                <span class="badge bg-dark bg-opacity-75 text-white backdrop-blur px-2.5 py-1 rounded-pill small">
+                  {{ img.get_category_display }}
+                </span>
+              </div>
+            </div>
+
+            <div class="p-3">
+              <h5 class="fw-bold mb-1" style="color: #0F172A; font-size: 1.05rem;">
+                {{ img.title }}
+              </h5>
+              {% if img.caption %}
+                <p class="small mb-0" style="color: #64748B; line-height: 1.6;">
+                  {{ img.caption }}
+                </p>
+              {% endif %}
+            </div>
+          </div>
+
+          <div class="p-3 pt-0 d-flex justify-content-end align-items-center border-top border-slate-100 mt-2">
+            <button class="btn btn-xs btn-outline-primary px-3 py-1.5 rounded-pill small fw-semibold" 
+                    onclick="openGalleryModal('{{ img.image_url }}', '{{ img.title|escapejs }}', '{{ img.caption|default:''|escapejs }}')">
+              <i class="bi bi-arrows-fullscreen me-1"></i> View Full Photo
+            </button>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Official Facebook Banner Callout -->
+    <div class="mt-5 p-4 p-md-5 rounded-4 glass-panel text-center position-relative overflow-hidden border-teal" style="border-left: 6px solid #1877F2;">
+      <div class="d-flex flex-column flex-md-row align-items-center justify-content-between gap-3 text-md-start">
+        <div>
+          <div class="badge-fb-live mb-2"><i class="bi bi-facebook"></i> Active Daily Updates</div>
+          <h3 class="fw-bold mb-1 text-dark">See More Live Classroom Videos & Stories</h3>
+          <p class="text-secondary small mb-0">We regularly share joyful moments and milestone celebrations directly on our official Facebook community page.</p>
+        </div>
+        <a href="https://www.facebook.com/p/Pahilo-Paila-Montessori-School-61569129280008/" target="_blank" class="btn btn-fb btn-lg px-4 flex-shrink-0">
+          <i class="bi bi-facebook me-2 fs-5"></i> Visit Facebook Gallery &rarr;
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox Modal for Photo Preview -->
+<div class="modal fade" id="galleryPhotoModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content border-0 rounded-4 shadow-2xl overflow-hidden" style="background: rgba(15, 23, 42, 0.96); backdrop-filter: blur(20px);">
+      <div class="modal-header border-0 pb-0">
+        <h5 class="modal-title text-white fw-bold" id="galleryModalTitle"></h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-3 text-center">
+        <img id="galleryModalImg" src="" alt="Enlarged Photo" class="img-fluid rounded-3 shadow-lg" style="max-height: 75vh; object-fit: contain;">
+        <p id="galleryModalCaption" class="text-light opacity-75 small mt-3 mb-1 px-3"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function openGalleryModal(imgUrl, title, caption) {
+  document.getElementById('galleryModalImg').src = imgUrl;
+  document.getElementById('galleryModalTitle').innerText = title;
+  document.getElementById('galleryModalCaption').innerText = caption;
+  var modalEl = document.getElementById('galleryPhotoModal');
+  var modal = new bootstrap.Modal(modalEl);
+  modal.show();
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const filterButtons = document.querySelectorAll('#gallery-filters .gallery-filter-pill');
+  const cards = document.querySelectorAll('.gallery-card-item');
+
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', function() {
+      filterButtons.forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+
+      const filterVal = this.getAttribute('data-filter');
+      cards.forEach(card => {
+        if (filterVal === 'all' || card.getAttribute('data-category') === filterVal) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+});
+</script>
+{% endblock %}

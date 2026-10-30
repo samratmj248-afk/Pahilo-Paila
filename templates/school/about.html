@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+{% block title %}About Us | Pahilo Paila Montessori (Suda, Mahendranagar){% endblock %}
+
+{% block content %}
+<section class="py-5">
+  <div class="container py-4">
+    <div class="row align-items-center g-5 mb-5">
+      <div class="col-lg-6">
+        <div class="badge-montessori mb-2">Our Philosophy</div>
+        <h1 class="display-4 fw-bold mb-4">Dedicated to Child-Centered Learning in Suda, Mahendranagar</h1>
+        <p class="text-secondary lead fs-6 mb-4">
+          At <strong>Pahilo Paila Montessori School</strong>, we believe every child is born with natural curiosity, innate dignity, and an infinite capacity to learn when placed in an environment structured to respect their autonomy.
+        </p>
+        <p class="text-secondary">
+          Founded on authentic Montessori principles, our classrooms feature mixed-age groupings, scientifically designed tactile apparatus, and certified educators serving as humble observers and loving guides.
+        </p>
+      </div>
+      <div class="col-lg-6">
+        <div class="glass-panel p-3">
+          <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1000&q=80" alt="Montessori Classroom" class="img-fluid rounded-4 w-100" style="height: 380px; object-fit: cover;">
+        </div>
+      </div>
+    </div>
+
+    <!-- Leadership & Guides -->
+    <div class="mt-5">
+      <div class="text-center max-w-700 mx-auto mb-5">
+        <div class="badge-montessori mb-3">
+          <i class="bi bi-person-badge-fill me-1"></i> Leadership & Educators
+        </div>
+        <h2 class="section-title mb-3">Our Guiders & Educators</h2>
+        <p class="section-subtitle">
+          Dedicated mentors, certified Montessori educators, and loving caregivers shaping foundational steps in Suda, Mahendranagar.
+        </p>
+      </div>
+
+      <!-- Principal Spotlight Card -->
+      {% for member in staff %}
+        {% if member.role == 'principal' %}
+        <div class="mb-5">
+          <div class="glass-panel p-4 p-md-5 shadow-sm" style="border-left: 6px solid #ECA23B;">
+            <div class="row align-items-center g-4">
+              <div class="col-md-4 text-center">
+                <div class="position-relative d-inline-block">
+                  <img src="{{ member.avatar_url }}" 
+                       alt="{{ member.name }}" 
+                       class="rounded-circle shadow-lg border border-4 border-warning" 
+                       style="width: 170px; height: 170px; object-fit: cover;">
+                  <span class="position-absolute bottom-0 end-0 badge bg-warning text-dark fw-bold px-3 py-1 rounded-pill shadow-sm" style="font-size: 0.78rem;">
+                    ★ Principal
+                  </span>
+                </div>
+              </div>
+              <div class="col-md-8 text-center text-md-start">
+                <div class="badge bg-warning bg-opacity-10 text-dark border border-warning border-opacity-25 px-3 py-1 rounded-pill small fw-bold mb-2">
+                  School Head & Academic Director
+                </div>
+                <h2 class="display-6 fw-bold mb-2" style="color: #0F172A;">
+                  {{ member.name }}
+                </h2>
+                <div class="text-gradient fw-bold fs-6 mb-3">
+                  {{ member.qualifications }} &bull; {{ member.experience_years }}+ Years Guiding Young Minds
+                </div>
+                <p class="text-secondary lead fs-6 mb-0" style="line-height: 1.75;">
+                  {{ member.bio }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+      {% endfor %}
+
+      <!-- Educators & Staff Grid -->
+      <div class="mb-4">
+        <h4 class="fw-bold text-center mb-4" style="color: #0F172A;">Montessori Classroom Guides & Mentors</h4>
+      </div>
+
+      <div class="row g-4">
+        {% for member in staff %}
+          {% if member.role != 'principal' %}
+          <div class="col-md-6 col-lg-3">
+            <div class="glass-panel p-4 h-100 text-center d-flex flex-column justify-content-between shadow-sm">
+              <div>
+                <div class="position-relative d-inline-block mb-3">
+                  <img src="{{ member.avatar_url }}" 
+                       alt="{{ member.name }}" 
+                       class="rounded-circle shadow-sm border border-2 border-teal" 
+                       style="width: 120px; height: 120px; object-fit: cover;">
+                </div>
+                <h5 class="fw-bold mb-1" style="color: #0F172A;">{{ member.name }}</h5>
+                <span class="badge bg-teal bg-opacity-10 text-primary border border-primary border-opacity-25 px-2.5 py-1 rounded-pill small fw-bold mb-2 d-inline-block">
+                  {{ member.get_role_display }}
+                </span>
+                <p class="small text-secondary fw-semibold mb-2">{{ member.qualifications }}</p>
+                <p class="small text-muted mb-0" style="line-height: 1.6;">{{ member.bio }}</p>
+              </div>
+              <div class="pt-3 border-top border-slate-100 mt-3 text-muted small">
+                <i class="bi bi-clock-history me-1 text-primary"></i> {{ member.experience_years }} Years Experience
+              </div>
+            </div>
+          </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

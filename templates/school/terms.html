@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block title %}Terms & Conditions | Pahilo Paila Montessori School (Suda, Mahendranagar){% endblock %}
+
+{% block content %}
+<section class="py-5">
+  <div class="container py-4">
+    <div class="text-center max-w-700 mx-auto mb-5">
+      <div class="badge-montessori mb-3">
+        <i class="bi bi-shield-check me-1"></i> School Policies & Guidelines
+      </div>
+      <h1 class="section-title mb-3">Terms & Conditions</h1>
+      <p class="section-subtitle">
+        Welcome to Pahilo Paila Montessori School (पहिलो पाइला Montessori School), located in Suda, Mahendranagar. These terms outline our admissions policies, student safety standards, and parent partnerships.
+      </p>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+      <div class="col-lg-10">
+        <div class="glass-panel p-4 p-md-5 shadow-sm">
+          
+          <div class="mb-5">
+            <h4 class="fw-bold mb-3" style="color: #0F172A;">1. Admission & Enrollment Policies</h4>
+            <p class="text-secondary" style="line-height: 1.7;">
+              Admissions to Pahilo Paila Montessori School (Playgroup, Nursery, LKG, and UKG) are granted based on age readiness, developmental assessment, and seat availability within each cohort. We maintain Dr. Maria Montessori's recommended educator-to-child ratios to guarantee personalized care and sensorial learning.
+            </p>
+            <ul class="text-secondary small d-flex flex-column gap-2 mb-0">
+              <li>&bull; Age milestones must be met by the child prior to commencing the respective level.</li>
+              <li>&bull; An initial parent observation session and child orientation are required before final placement.</li>
+              <li>&bull; Official birth registration copies and immunization records must be submitted at the time of admission.</li>
+            </ul>
+          </div>
+
+          <div class="mb-5">
+            <h4 class="fw-bold mb-3" style="color: #0F172A;">2. School Attendance & Pick-up Safety</h4>
+            <p class="text-secondary" style="line-height: 1.7;">
+              Child security is our highest priority. School operating hours run Sunday through Friday. Children will only be released to designated parents, guardians, or authorized family representatives who carry official school identification.
+            </p>
+            <ul class="text-secondary small d-flex flex-column gap-2 mb-0">
+              <li>&bull; Arrival and pick-up must strictly follow cohort schedule times.</li>
+              <li>&bull; In the event of an emergency pickup by a non-registered guardian, prior telephonic confirmation with the administrative office (984-8636068) is mandatory.</li>
+            </ul>
+          </div>
+
+          <div class="mb-5">
+            <h4 class="fw-bold mb-3" style="color: #0F172A;">3. Health, Nutrition & Hygiene Guidelines</h4>
+            <p class="text-secondary" style="line-height: 1.7;">
+              To protect the health of all children, parents must notify the school if their child exhibits fever, infectious conditions, or acute symptoms. Children recovering from contagious illnesses may return after full recovery or with medical clearance.
+            </p>
+            <ul class="text-secondary small d-flex flex-column gap-2 mb-0">
+              <li>&bull; Healthy, hygienic, age-tailored snacks are provided within school hours.</li>
+              <li>&bull; Any dietary restrictions, allergies, or special physical requirements must be stated in the child's admission profile.</li>
+            </ul>
+          </div>
+
+          <div class="mb-5">
+            <h4 class="fw-bold mb-3" style="color: #0F172A;">4. Media, Photographs & Activities</h4>
+            <p class="text-secondary" style="line-height: 1.7;">
+              Photographs and short video documentation of classroom sensorial exercises, science exploration, and school events are maintained for pedagogical portfolios and official school communication on our verified Facebook page. Parents wishing to opt out may state so upon admission registration.
+            </p>
+          </div>
+
+          <div class="mb-4">
+            <h4 class="fw-bold mb-3" style="color: #0F172A;">5. Contact & Institutional Information</h4>
+            <p class="text-secondary mb-2" style="line-height: 1.7;">
+              For any clarifications, concerns, or inquiries regarding these policies, please reach out directly:
+            </p>
+            <div class="p-3 rounded-3 bg-light border border-slate-200 small">
+              <div><strong>Pahilo Paila Montessori School</strong> (पहिलो पाइला)</div>
+              <div>Address: Suda, Mahendranagar, Kanchanpur, Sudurpashchim, Nepal</div>
+              <div>Helpline: <strong>984-8636068</strong> | Email: <strong>Pahilopaila1@gmail.com</strong></div>
+            </div>
+          </div>
+
+          <div class="pt-4 border-top border-slate-200 d-flex flex-wrap justify-content-between align-items-center gap-3">
+            <a href="{% url 'school:home' %}" class="btn btn-outline-secondary btn-sm px-3 py-2 rounded-3 fw-semibold">
+              &larr; Return to Home
+            </a>
+            <a href="{% url 'school:contact' %}" class="btn btn-montessori-primary btn-sm px-4 py-2">
+              Contact School Office
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

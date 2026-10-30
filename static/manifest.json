@@ -1,0 +1,25 @@
+{
+  "name": "Pahilo Paila Montessori",
+  "short_name": "Pahilo Paila",
+  "description": "Nurturing Curious Minds, Shaping Joyful Futures (पहिलो पाइला Montessori)",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0f1d",
+  "theme_color": "#ff5e62",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/static/img/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/static/img/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "kids", "school"]
+}

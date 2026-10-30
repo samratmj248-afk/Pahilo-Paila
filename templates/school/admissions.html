@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+
+{% block title %}Admissions & Enrollment | Pahilo Paila Montessori School (Suda, Mahendranagar){% endblock %}
+
+{% block content %}
+<section class="py-5">
+  <div class="container py-4">
+    <div class="text-center max-w-700 mx-auto mb-5">
+      <div class="badge-montessori mb-2">Admission Process</div>
+      <h1 class="display-4 fw-bold mb-3">Enrolling at Pahilo Paila</h1>
+      <p class="text-secondary lead fs-6">
+        We ensure a transparent, joyful, and welcoming transition into school life for both children and parents.
+      </p>
+    </div>
+
+    <!-- 4 Step Process -->
+    <div class="row g-4 mb-5">
+      <div class="col-md-3">
+        <div class="glass-panel p-4 h-100 text-center">
+          <div class="fs-1 fw-bold text-gradient mb-2">01</div>
+          <h5 class="fw-bold mb-2">Submit Inquiry</h5>
+          <p class="text-secondary small mb-0">Fill out our online inquiry form with your child's age and background details.</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="glass-panel p-4 h-100 text-center">
+          <div class="fs-1 fw-bold text-gradient mb-2">02</div>
+          <h5 class="fw-bold mb-2">School Walkthrough</h5>
+          <p class="text-secondary small mb-0">Observe our live Montessori environments and speak directly with educators.</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="glass-panel p-4 h-100 text-center">
+          <div class="fs-1 fw-bold text-gradient mb-2">03</div>
+          <h5 class="fw-bold mb-2">Child Interaction</h5>
+          <p class="text-secondary small mb-0">A gentle discovery session where your child interacts with sensorial materials.</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="glass-panel p-4 h-100 text-center">
+          <div class="fs-1 fw-bold text-gradient mb-2">04</div>
+          <h5 class="fw-bold mb-2">Welcome Kit</h5>
+          <p class="text-secondary small mb-0">Finalize registration, receive the parent handbook, and begin the joyful journey.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Admission Form Section -->
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="glass-panel p-4 p-md-5 shadow-2xl">
+          <div class="text-center mb-4">
+            <h3 class="fw-bold">Admission & School Visit Application</h3>
+            <p class="text-secondary small">Please provide the necessary information below. All data is securely handled.</p>
+          </div>
+
+          <div id="admission-form-response"></div>
+
+          <form id="admission-inquiry-form" method="POST" action="{% url 'school:submit_admission' %}">
+            {% csrf_token %}
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label-custom">Child Full Name *</label>
+                <input type="text" name="child_name" class="form-control-custom" placeholder="e.g. Maya Shrestha" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label-custom">Child Date of Birth *</label>
+                <input type="date" name="child_dob" class="form-control-custom" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label-custom">Parent / Guardian Name *</label>
+                <input type="text" name="parent_name" class="form-control-custom" placeholder="e.g. Ramesh Shrestha" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label-custom">Primary Contact Phone *</label>
+                <input type="tel" name="parent_phone" class="form-control-custom" placeholder="984-8636068" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label-custom">Email Address *</label>
+                <input type="email" name="parent_email" class="form-control-custom" placeholder="parent@domain.com" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label-custom">Target Level</label>
+                <select name="program_interested" class="form-select-custom">
+                  <option value="">Select Level</option>
+                  {% for p in programs %}
+                    <option value="{{ p.id }}">{{ p.title }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label-custom">Preferred Start Date</label>
+                <input type="date" name="preferred_start_date" class="form-control-custom">
+              </div>
+              <div class="col-12">
+                <label class="form-label-custom">Child's Habits, Interests or Queries</label>
+                <textarea name="message" rows="3" class="form-control-custom" placeholder="Share your expectations, food habits, or questions for our educators..."></textarea>
+              </div>
+              <div class="col-12 mt-4">
+                <button type="submit" class="btn btn-montessori-primary w-100 py-3 font-weight-bold">
+                  Submit Admission Application &rarr;
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

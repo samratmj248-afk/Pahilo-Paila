@@ -1,0 +1,490 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Pahilo Paila Montessori School | Suda, Mahendranagar (पहिलो पाइला){% endblock %}
+
+{% block content %}
+<!-- Beautiful Re-arranged Hero Section (Mobile Photo First, Clean Desktop Layout) -->
+<section class="py-5 position-relative overflow-hidden hero-children-section" style="min-height: 85vh; display: flex; align-items: center;">
+  
+  <!-- Interactive Poppable Foreground Balloons with Letters (A, B), Numbers (1, 2), and Nepali Akshar (क, ख) -->
+  <div class="balloons-foreground-container" id="balloons-hero-layer">
+    <div class="interactive-balloon balloon-teal" style="left: 6%; animation-delay: 0s; animation-duration: 11s;" data-char="A" onclick="burstBalloon(this, event)">
+      <span class="balloon-char">A</span>
+      <div class="balloon-string"></div>
+    </div>
+    <div class="interactive-balloon balloon-pink" style="left: 18%; animation-delay: 2.5s; animation-duration: 13s;" data-char="क" onclick="burstBalloon(this, event)">
+      <span class="balloon-char">क</span>
+      <div class="balloon-string"></div>
+    </div>
+    <div class="interactive-balloon balloon-gold" style="left: 32%; animation-delay: 5s; animation-duration: 12s;" data-char="1" onclick="burstBalloon(this, event)">
+      <span class="balloon-char">1</span>
+      <div class="balloon-string"></div>
+    </div>
+    <div class="interactive-balloon balloon-blue" style="left: 45%; animation-delay: 1.2s; animation-duration: 14s;" data-char="B" onclick="burstBalloon(this, event)">
+      <span class="balloon-char">B</span>
+      <div class="balloon-string"></div>
+    </div>
+    <div class="interactive-balloon balloon-green" style="left: 62%; animation-delay: 3.8s; animation-duration: 12.5s;" data-char="ख" onclick="burstBalloon(this, event)">
+      <span class="balloon-char">ख</span>
+      <div class="balloon-string"></div>
+    </div>
+    <div class="interactive-balloon balloon-purple" style="left: 76%; animation-delay: 0.8s; animation-duration: 13.5s;" data-char="2" onclick="burstBalloon(this, event)">
+      <span class="balloon-char">2</span>
+      <div class="balloon-string"></div>
+    </div>
+    <div class="interactive-balloon balloon-orange" style="left: 90%; animation-delay: 4.2s; animation-duration: 11.5s;" data-char="ग" onclick="burstBalloon(this, event)">
+      <span class="balloon-char">ग</span>
+      <div class="balloon-string"></div>
+    </div>
+  </div>
+
+  <div class="container position-relative z-1 py-3 py-md-4">
+    <div class="row align-items-center g-4 g-lg-5">
+      
+      <!-- Photo Column: order-1 on phone (first), order-lg-2 on desktop (right side) -->
+      <div class="col-lg-5 order-1 order-lg-2 animate__animated animate__fadeInRight text-center">
+        <div class="position-relative mx-auto" style="max-width: 440px;">
+          <div class="glass-panel p-2 overflow-hidden shadow-2xl rounded-4 floating-element position-relative">
+            <img src="{% static 'img/pencil_race.jpg' %}" 
+                 alt="Pahilo Paila Montessori Classroom Activity" 
+                 class="img-fluid rounded-4 w-100" 
+                 style="height: 320px; max-height: 420px; object-fit: cover;"
+                 onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=1000&q=80';">
+            
+            <!-- Hero Animated Logo Emblem (AVNSS Style) in Photo Card -->
+            <div class="position-absolute" style="top: 14px; right: 14px; z-index: 5;">
+              <div class="avnss-logo-wrapper" style="width: 52px; height: 52px; background: rgba(15,23,42,0.85); border-radius: 50%; box-shadow: 0 4px 20px rgba(0,0,0,0.5);">
+                <div class="logo-bg-ring" style="width: 48px; height: 48px;"></div>
+                <div class="logo-particle"></div>
+                <div class="logo-particle"></div>
+                <div class="logo-particle"></div>
+                <img src="{% static 'img/logo.svg' %}" alt="Pahilo Paila Emblem" class="navbar-brand-img" style="height: 38px; width: 38px;">
+              </div>
+            </div>
+          </div>
+          
+          <!-- Floating Location Badge -->
+          <div class="glass-panel position-absolute p-2 p-md-3 shadow-lg rounded-3 d-flex align-items-center gap-2 gap-md-3" 
+               style="bottom: -10px; left: 8px; max-width: calc(100% - 16px); background: rgba(15, 23, 42, 0.95);">
+            <div class="bg-success text-white rounded-circle p-2 d-flex align-items-center justify-content-center flex-shrink-0" style="width: 36px; height: 36px;">
+              <i class="bi bi-geo-alt-fill fs-5"></i>
+            </div>
+            <div class="text-start text-truncate">
+              <div class="fw-bold small text-white text-truncate">Suda, Mahendranagar</div>
+              <div class="text-secondary" style="font-size: 0.72rem;">Kanchanpur, Nepal</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Text Column: order-2 on phone (after photo), order-lg-1 on desktop (left side) -->
+      <div class="col-lg-7 order-2 order-lg-1">
+        <!-- Official Status Pill -->
+        <div class="d-inline-flex align-items-center gap-2 mb-3 p-1 pe-3 glass-panel rounded-pill animate__animated animate__fadeInDown">
+          <span class="badge bg-success rounded-pill px-3 py-2 fw-bold text-uppercase" style="font-size: 0.72rem;">
+            <i class="bi bi-shield-check me-1"></i> Admissions Open
+          </span>
+          <span class="small text-secondary fw-semibold">Preschool & Kindergarten</span>
+        </div>
+        
+        <!-- Main Headline -->
+        <h1 class="hero-title display-4 fw-bold mb-3 animate__animated animate__fadeInLeft">
+          Where First Steps Spark <span class="text-gradient">Lifelong Giants</span>
+        </h1>
+        
+        <!-- Systematic School Introduction & Description -->
+        <p class="lead text-secondary mb-3 fs-6 fs-md-5 animate__animated animate__fadeInLeft animate__delay-1s" style="max-width: 620px; line-height: 1.75;">
+          Welcome to <strong>Pahilo Paila Montessori School</strong> (पहिलो पाइला), Suda, Mahendranagar. We cultivate joyful early childhood learning, curiosity, and practical life independence through scientifically prepared sensory environments, exciting developmental games, and loving guidance.
+        </p>
+
+        <!-- Systematic Montessori Feature Pills (Child-Friendly Playful Colors) -->
+        <div class="d-flex flex-wrap gap-2 mb-4 animate__animated animate__fadeInLeft animate__delay-1s">
+          <span class="badge rounded-pill px-3 py-2 fw-semibold" style="background: rgba(255, 107, 107, 0.12); color: #E63946; border: 1px solid rgba(255, 107, 107, 0.25);">
+            <i class="bi bi-heart-fill me-1"></i> Child-Centered Care
+          </span>
+          <span class="badge rounded-pill px-3 py-2 fw-semibold" style="background: rgba(255, 183, 77, 0.15); color: #D97706; border: 1px solid rgba(255, 183, 77, 0.35);">
+            <i class="bi bi-puzzle-fill me-1"></i> Sensory & Motor Exploration
+          </span>
+          <span class="badge rounded-pill px-3 py-2 fw-semibold" style="background: rgba(78, 205, 196, 0.15); color: #00A896; border: 1px solid rgba(78, 205, 196, 0.35);">
+            <i class="bi bi-stars me-1"></i> Playgroup to UKG
+          </span>
+        </div>
+        
+        <!-- Primary Actions in Modern Clean Systematic Style -->
+        <div class="d-flex flex-wrap align-items-center gap-3 mb-2 animate__animated animate__fadeInUp animate__delay-1s">
+          <a href="{% url 'school:admissions' %}" class="btn btn-montessori-primary btn-lg shadow-sm">
+            <i class="bi bi-pencil-square"></i> Enroll Your Child
+          </a>
+          <a href="{% url 'school:contact' %}" class="btn btn-get-in-touch">
+            <span class="btn-icon-wrapper">
+              <i class="bi bi-chat-dots-fill"></i>
+            </span>
+            <span>Get in Touch</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Montessori Programs Section (Clean & Arranged) -->
+<section class="py-5 bg-surface-subtle">
+  <div class="container py-4">
+    <div class="text-center max-w-700 mx-auto mb-5">
+      <div class="badge-montessori mb-2">Age-Aligned Learning</div>
+      <h2 class="display-5 fw-bold mb-3">Our Montessori Levels</h2>
+      <p class="text-secondary">Specially crafted for Playgroup, Nursery, LKG, and UKG in Suda, Mahendranagar.</p>
+    </div>
+
+    <div class="row g-4">
+      {% for program in programs %}
+      <div class="col-md-6 col-lg-3">
+        <div class="glass-panel p-4 h-100 d-flex flex-column justify-content-between" style="border-top: 4px solid {{ program.color_accent }};">
+          <div>
+            <span class="badge bg-secondary bg-opacity-25 border border-secondary border-opacity-50 px-2 py-1 rounded-pill small mb-3">
+              {{ program.get_age_group_display }}
+            </span>
+            <h4 class="fw-bold mb-2">{{ program.title }}</h4>
+            <p class="text-secondary small mb-4">{{ program.description|truncatewords:16 }}</p>
+          </div>
+          <div class="pt-3 border-top border-secondary border-opacity-25 d-flex justify-content-between align-items-center">
+            <span class="text-warning small"><i class="bi bi-clock me-1"></i>{{ program.timing }}</span>
+            <a href="{% url 'school:program_detail' program.slug %}" class="btn btn-sm btn-montessori-primary p-2">
+              <i class="bi bi-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Daily Classroom Activities Section -->
+<section class="py-5">
+  <div class="container py-4">
+    <div class="d-flex flex-wrap justify-content-between align-items-end mb-5">
+      <div>
+        <div class="badge-montessori mb-2">Hands-on Growth</div>
+        <h2 class="display-5 fw-bold mb-2">Daily Classroom Activities</h2>
+        <p class="text-secondary mb-0">From "Pencil Picking Races" to "Colour Hunting Games" and creative clay studios!</p>
+      </div>
+      <a href="https://www.facebook.com/p/Pahilo-Paila-Montessori-School-61569129280008/" target="_blank" class="btn btn-fb mt-3 mt-md-0">
+        <i class="bi bi-facebook me-1"></i> View Facebook Posts &rarr;
+      </a>
+    </div>
+
+    <div class="row g-4">
+      <!-- Activity Card 1 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="fb-post-card h-100 d-flex flex-column justify-content-between">
+          <div>
+            <div class="p-3 d-flex align-items-center gap-3 border-bottom border-secondary border-opacity-25">
+              <img src="{% static 'img/icon-192.png' %}" alt="Pahilo Paila" class="rounded-circle" style="width: 40px; height: 40px;">
+              <div>
+                <h6 class="mb-0 fw-bold">Pahilo Paila Montessori</h6>
+                <small class="text-secondary"><i class="bi bi-facebook text-primary me-1"></i> Sensorial Game</small>
+              </div>
+            </div>
+            <img src="{% static 'img/color_hunt.jpg' %}" 
+                 alt="Colour Hunting Game" 
+                 class="img-fluid w-100" 
+                 style="height: 220px; object-fit: cover;"
+                 onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1596495578065-6e0763fa1178?auto=format&fit=crop&w=700&q=80';">
+            <div class="p-3">
+              <h5 class="fw-bold mb-2">🌈 "Colour Hunting & Object Sorting Game"</h5>
+              <p class="text-secondary small mb-0">
+                Children exploring their environment identifying vibrant primary and secondary hues. A fun hands-on sensorial exercise boosting cognitive association!
+              </p>
+            </div>
+          </div>
+          <div class="p-3 pt-0 d-flex justify-content-between align-items-center">
+            <span class="badge bg-danger bg-opacity-25 text-danger px-2 py-1 rounded-pill small">Sensorial Activity</span>
+            <a href="https://www.facebook.com/p/Pahilo-Paila-Montessori-School-61569129280008/" target="_blank" class="text-primary small fw-bold">Read on FB &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Activity Card 2 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="fb-post-card h-100 d-flex flex-column justify-content-between">
+          <div>
+            <div class="p-3 d-flex align-items-center gap-3 border-bottom border-secondary border-opacity-25">
+              <img src="{% static 'img/icon-192.png' %}" alt="Pahilo Paila" class="rounded-circle" style="width: 40px; height: 40px;">
+              <div>
+                <h6 class="mb-0 fw-bold">Pahilo Paila Montessori</h6>
+                <small class="text-secondary"><i class="bi bi-facebook text-primary me-1"></i> Motor Skill Challenge</small>
+              </div>
+            </div>
+            <img src="{% static 'img/pencil_race.jpg' %}" 
+                 alt="Pencil Picking Race" 
+                 class="img-fluid w-100" 
+                 style="height: 220px; object-fit: cover;"
+                 onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&w=700&q=80';">
+            <div class="p-3">
+              <h5 class="fw-bold mb-2">✏️ "Pencil Picking Race & Grip Mastery"</h5>
+              <p class="text-secondary small mb-0">
+                Developing the crucial 3-finger pincer grasp needed for joyful early writing through playful dexterity races and coordination games.
+              </p>
+            </div>
+          </div>
+          <div class="p-3 pt-0 d-flex justify-content-between align-items-center">
+            <span class="badge bg-warning bg-opacity-25 text-warning px-2 py-1 rounded-pill small">Motor Skills</span>
+            <a href="https://www.facebook.com/p/Pahilo-Paila-Montessori-School-61569129280008/" target="_blank" class="text-primary small fw-bold">Read on FB &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Activity Card 3 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="fb-post-card h-100 d-flex flex-column justify-content-between">
+          <div>
+            <div class="p-3 d-flex align-items-center gap-3 border-bottom border-secondary border-opacity-25">
+              <img src="{% static 'img/icon-192.png' %}" alt="Pahilo Paila" class="rounded-circle" style="width: 40px; height: 40px;">
+              <div>
+                <h6 class="mb-0 fw-bold">Pahilo Paila Montessori</h6>
+                <small class="text-secondary"><i class="bi bi-facebook text-primary me-1"></i> Creative Arts</small>
+              </div>
+            </div>
+            <img src="{% static 'img/clay_art.jpg' %}" 
+                 alt="Creative Clay and Color Studio" 
+                 class="img-fluid w-100" 
+                 style="height: 220px; object-fit: cover;"
+                 onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=700&q=80';">
+            <div class="p-3">
+              <h5 class="fw-bold mb-2">🎨 "Creative Clay & Color Studio"</h5>
+              <p class="text-secondary small mb-0">
+                Free-form tactile pottery, finger painting, and sensory texture blending designed for playful creative expression.
+              </p>
+            </div>
+          </div>
+          <div class="p-3 pt-0 d-flex justify-content-between align-items-center">
+            <span class="badge bg-success bg-opacity-25 text-success px-2 py-1 rounded-pill small">Creative Art</span>
+            <a href="https://www.facebook.com/p/Pahilo-Paila-Montessori-School-61569129280008/" target="_blank" class="text-primary small fw-bold">Read on FB &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Real School & Student Moments Showcase -->
+<section class="py-5 bg-surface-subtle">
+  <div class="container py-4">
+    <div class="d-flex flex-wrap justify-content-between align-items-end mb-4">
+      <div>
+        <div class="badge-montessori mb-2"><i class="bi bi-camera-fill me-1"></i> School Memories</div>
+        <h2 class="display-5 fw-bold mb-2">Life at Pahilo Paila</h2>
+        <p class="text-secondary mb-0">Authentic moments of joy, agriculture exploration, celebrations, and friendships in Suda.</p>
+      </div>
+      <a href="{% url 'school:gallery' %}" class="btn btn-outline-secondary px-4 py-2 rounded-3 fw-semibold mt-3 mt-md-0">
+        Explore Full Gallery ({{ all_programs|length|default:"12" }}+ Photos) &rarr;
+      </a>
+    </div>
+
+    <div class="row g-4">
+      <!-- Welcome Photo -->
+      <div class="col-lg-6">
+        <div class="glass-panel p-2 h-100 shadow-sm overflow-hidden">
+          <div class="position-relative overflow-hidden rounded-3" style="height: 320px;">
+            <img src="{% static 'img/gallery/welcome_school_gathering.webp' %}" 
+                 alt="Welcome to School Gathering" 
+                 class="img-fluid w-100 h-100" 
+                 style="object-fit: cover; transition: transform 0.4s ease;"
+                 onmouseover="this.style.transform='scale(1.04)'"
+                 onmouseout="this.style.transform='scale(1)'">
+            <span class="position-absolute top-0 end-0 m-3 badge bg-dark bg-opacity-75 text-white backdrop-blur px-2.5 py-1.5 rounded-pill small">
+              🎉 School Welcome
+            </span>
+          </div>
+          <div class="p-3">
+            <h5 class="fw-bold mb-1" style="color: #0F172A;">Welcome to Our School (पहिलो पाइला)</h5>
+            <p class="small text-secondary mb-0">Our smiling toddler cohorts in school uniforms celebrating their first day in our welcoming Montessori hall.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dhan Diwas Outdoor Photo -->
+      <div class="col-md-6 col-lg-3">
+        <div class="glass-panel p-2 h-100 shadow-sm overflow-hidden">
+          <div class="position-relative overflow-hidden rounded-3" style="height: 320px;">
+            <img src="{% static 'img/gallery/dhan_diwas_rice_plantation.webp' %}" 
+                 alt="National Paddy Day Rice Plantation" 
+                 class="img-fluid w-100 h-100" 
+                 style="object-fit: cover; transition: transform 0.4s ease;"
+                 onmouseover="this.style.transform='scale(1.04)'"
+                 onmouseout="this.style.transform='scale(1)'">
+            <span class="position-absolute top-0 end-0 m-3 badge bg-success bg-opacity-80 text-white backdrop-blur px-2.5 py-1.5 rounded-pill small">
+              🌱 धान दिवस Nature Play
+            </span>
+          </div>
+          <div class="p-3">
+            <h6 class="fw-bold mb-1" style="color: #0F172A;">Rice Plantation Day</h6>
+            <p class="small text-secondary mb-0">Practical life learning connecting young hands to agriculture and nature.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Holi Sensory Photo -->
+      <div class="col-md-6 col-lg-3">
+        <div class="glass-panel p-2 h-100 shadow-sm overflow-hidden">
+          <div class="position-relative overflow-hidden rounded-3" style="height: 320px;">
+            <img src="{% static 'img/gallery/holi_colors_activity.webp' %}" 
+                 alt="Holi Festival Sensory Celebration" 
+                 class="img-fluid w-100 h-100" 
+                 style="object-fit: cover; transition: transform 0.4s ease;"
+                 onmouseover="this.style.transform='scale(1.04)'"
+                 onmouseout="this.style.transform='scale(1)'">
+            <span class="position-absolute top-0 end-0 m-3 badge bg-danger bg-opacity-80 text-white backdrop-blur px-2.5 py-1.5 rounded-pill small">
+              🎨 Holi Sensory Play
+            </span>
+          </div>
+          <div class="p-3">
+            <h6 class="fw-bold mb-1" style="color: #0F172A;">Holi Color Festival</h6>
+            <p class="small text-secondary mb-0">Joyous socialization and sensorial color exploration in the open courtyard.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Fast Admissions Inquiry -->
+<section class="py-5 position-relative">
+  <div class="container py-4">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <div class="badge-montessori mb-2">Simple & Stress-Free</div>
+        <h2 class="display-5 fw-bold mb-3">Enroll Your Child in 3 Easy Steps</h2>
+        <p class="text-secondary lead fs-6 mb-4">
+          Visit our school, observe the prepared classrooms, and see how Dr. Maria Montessori's philosophy sets the strongest foundation for your child.
+        </p>
+
+        <div class="d-flex flex-column gap-3 mb-4">
+          <div class="glass-panel p-3 d-flex align-items-center gap-3">
+            <div class="bg-danger bg-opacity-25 text-danger rounded-circle p-2 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+              <strong>1</strong>
+            </div>
+            <div>
+              <h6 class="mb-0 fw-bold">Submit Online Inquiry</h6>
+              <small class="text-secondary">Fill the quick form and our educators will contact you</small>
+            </div>
+          </div>
+
+          <div class="glass-panel p-3 d-flex align-items-center gap-3">
+            <div class="bg-warning bg-opacity-25 text-warning rounded-circle p-2 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+              <strong>2</strong>
+            </div>
+            <div>
+              <h6 class="mb-0 fw-bold">School Visit & Classroom Discovery</h6>
+              <small class="text-secondary">Child gets to experience sensory apparatus in person</small>
+            </div>
+          </div>
+
+          <div class="glass-panel p-3 d-flex align-items-center gap-3">
+            <div class="bg-success bg-opacity-25 text-success rounded-circle p-2 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+              <strong>3</strong>
+            </div>
+            <div>
+              <h6 class="mb-0 fw-bold">Welcome to Pahilo Paila Family</h6>
+              <small class="text-secondary">Receive orientation kit and begin their journey</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="glass-panel p-4 p-md-5 shadow-2xl">
+          <h3 class="fw-bold mb-2">Fast Admission Inquiry</h3>
+          <p class="text-secondary small mb-4">Priority scheduling for parents.</p>
+
+          <div id="admission-form-response"></div>
+
+          <form id="admission-inquiry-form" method="POST" action="{% url 'school:submit_admission' %}">
+            {% csrf_token %}
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label-custom">Child Full Name *</label>
+                <input type="text" name="child_name" class="form-control-custom" placeholder="e.g. Aarav Sharma" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label-custom">Child Date of Birth *</label>
+                <input type="date" name="child_dob" class="form-control-custom" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label-custom">Parent / Guardian Name *</label>
+                <input type="text" name="parent_name" class="form-control-custom" placeholder="e.g. Dr. Sunita Sharma" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label-custom">Phone / WhatsApp *</label>
+                <input type="tel" name="parent_phone" class="form-control-custom" placeholder="984-8636068" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label-custom">Email Address *</label>
+                <input type="email" name="parent_email" class="form-control-custom" placeholder="parent@example.com" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label-custom">Target Level</label>
+                <select name="program_interested" class="form-select-custom">
+                  <option value="">Select Level</option>
+                  {% for p in all_programs %}
+                    <option value="{{ p.id }}">{{ p.title }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <div class="col-12">
+                <label class="form-label-custom">Special Notes or Questions</label>
+                <textarea name="message" rows="2" class="form-control-custom" placeholder="Dietary habits, queries or preferred visiting time..."></textarea>
+              </div>
+              <div class="col-12 mt-4">
+                <button type="submit" class="btn btn-montessori-primary w-100 py-3 font-weight-bold">
+                  Submit Priority Inquiry &rarr;
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+{% if testimonials %}
+<section class="py-5">
+  <div class="container py-4">
+    <div class="text-center max-w-700 mx-auto mb-5">
+      <div class="badge-montessori mb-2">Loved By Parents</div>
+      <h2 class="display-5 fw-bold mb-3">What Our Community Says</h2>
+    </div>
+
+    <div class="row g-4">
+      {% for item in testimonials %}
+      <div class="col-md-6 col-lg-4">
+        <div class="glass-panel p-4 h-100 d-flex flex-column justify-content-between">
+          <div>
+            <div class="text-warning mb-3">
+              {% for i in "12345" %}
+                <i class="bi bi-star-fill"></i>
+              {% endfor %}
+            </div>
+            <p class="text-secondary fst-italic mb-4">"{{ item.content }}"</p>
+          </div>
+          <div class="d-flex align-items-center gap-3 pt-3 border-top border-secondary border-opacity-25">
+            <img src="{{ item.avatar_url }}" alt="{{ item.parent_name }}" class="rounded-circle" style="width: 44px; height: 44px; object-fit: cover;">
+            <div>
+              <h6 class="mb-0 fw-bold">{{ item.parent_name }}</h6>
+              <small class="text-secondary">{{ item.child_name_and_grade }}</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% endblock %}
